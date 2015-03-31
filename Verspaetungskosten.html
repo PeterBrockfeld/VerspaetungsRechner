@@ -54,30 +54,40 @@
                         </td>
                     </tr>
                 </table>
-                <button id="einerMehr" value="einerMehr" type="button">+</button>
+                <button id="einerMehr" value="einerMehr" type="button">
+                    weitere Person anwesend
+                </button>
             </div>
             <div id="tabs-2">
                 <table>
                     <tr>
                         <td>Titel:</td>
-                        <td><input type="text" id="inputTitle" /></td>
+                        <td>
+                            <input type="text" id="inputTitle" />
+                        </td>
                     </tr>
                     <tr>
                         <td>Startzeit:</td>
-                        <td><input type="time" id="inputStarttime" /></td>
-                    </tr>
-                     <tr>
-                        <td>geladene Personen:</td>
-                        <td><div id="sliderGeladene"></div>
+                        <td>
+                            <input type="time" id="inputStarttime" />
                         </td>
                     </tr>
                     <tr>
-                        <td>Durchschnittskosten:</td>
-                        <td><div id="sliderDKosten"></div>
+                        <td>geladene Personen:</td>
+                        <td>
+                            <div id="sliderGeladene"></div>
                         </td>
+                        <td id="auswahlEingeladene"></td>
+                    </tr>
+                    <tr>
+                        <td>Durchschnittskosten:</td>
+                        <td>
+                            <div id="sliderDKosten"></div>
+                        </td>
+                        <td id="auswahlDurchschnittskosten"></td>
                     </tr>
                 </table>
-                <button id="ermitteln" type="button">Ermitteln</button>
+                <button id="uebernehmen" type="button">Übernehmen</button>
             </div>
 
         </div>
