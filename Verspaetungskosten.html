@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Folienrollenlänge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/Folienrolle.css">
+  <link href="./scripts/jquery-ui-1.11.1.custom/jquery-ui.css" rel="stylesheet">
+  <script src="./scripts/jquery-ui-1.11.1.custom/external/jquery/jquery.js"></script>
+  <script src="./scripts/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
+  <script type="text/javascript" src="./scripts/Folienrolle.js"></script>
+</head>
+<body>
+  <div id="theIntro">
+    <div id="heading">
+    <h1>Folienrollenlänge</h1>
+    </div>
+  </div>
+  <div id="theApplication">
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">Rechnung</a></li>
+        <li><a href="#tabs-2">Einstellungen</a></li>
+      </ul>
+      <div id="tabs-1">
+        <table>
+          <tr>
+            <td>Radiusdifferenz:</td>
+            <td><input type="text" id="rd"/></td>
+            <td>in mm</td>
+          </tr>
+         <tr>
+            <td>Restrollenlänge:</td>
+            <td><input type="text" id="La" readonly="readonly" /></td>
+            <td>in m</td>
+          </tr>
+         <tr>
+            <td>Restrollenlänge:</td>
+            <td><input type="text" id="LaA" readonly="readonly" /></td>
+            <td>in Abschnitten</td>
+          </tr>         
+        </table>
+        <button id="rechnen" value="rechnen" type="button">Rechnen</button> 
+      </div>
+      <div id="tabs-2">
+        <table>
+          <tr>
+            <td>Innenradius:</td>
+            <td><input type="text" id="r1"/></td>
+            <td>in mm</td>
+          </tr>
+          <tr>
+            <td>Außenradius:</td>
+            <td><input type="text" id="r2"/></td>
+            <td>in mm</td>
+          </tr>
+          <tr>
+            <td>Ziellänge:</td>
+            <td><input type="text" id="Lg"/></td>
+            <td>in m</td>
+          </tr>
+          <tr>
+            <td>Abschnittslänge:</td>
+            <td><input type="text" id="abschnittslaenge"/></td>
+            <td>in mm</td>
+          </tr>
+          <tr>
+            <td>Schichtdicke:</td>
+            <td><input type="text" id="schichtdicke" readonly="readonly" /></td>
+            <td>in µm</td>
+          </tr>    
+        </table>
+        <button id="ermitteln" type="button">Ermitteln</button>
+      </div>
+ 
+    </div> 
+  </div>  
+</body>
+</html>
