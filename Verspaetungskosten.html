@@ -21,42 +21,47 @@
     <div id="theApplication">
         <div id="tabs">
             <ul>
-                <li><a href="#tabs-1">Anwendung</a>
+                <li><a href="#tabs-1">Anzeige</a>
                 </li>
                 <li><a href="#tabs-2">Einstellungen</a>
                 </li>
             </ul>
             <div id="tabs-1">
-                <table>
-                    <tr>
-                        <td>Veranstaltung:</td>
-                        <td><span id="titel"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>geplanter Start:</td>
-                        <td><span id="geplanterStart"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Eingeladene Personen:</td>
-                        <td><span id="anzahlEingeladene"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Anwesende Personen:</td>
-                        <td><span id="anzahlAnwesende"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>bisherige Verspätungskosten:</td>
-                        <td><span id="bisherigeKosten"></span>
-                        </td>
-                    </tr>
-                </table>
-                <button id="einerMehr" value="einerMehr" type="button">
-                    weitere Person anwesend
-                </button>
+                <div id="tableBox">
+                    <table>
+                        <tr>
+                            <td>Veranstaltung:</td>
+                            <td><span id="titel" class="formItem"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>geplanter Start:</td>
+                            <td><span id="geplanterStart" class="formItem" </span> &nbsp;h
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Eingeladene Personen:</td>
+                            <td><span id="anzahlEingeladene" class="formItem"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Anwesende Personen:</td>
+                            <td><span id="anzahlAnwesende" class="formItem"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="buttonBox">
+                    <button id="einerMehr" value="einerMehr" type="button">
+                        weitere Person anwesend
+                    </button>
+                </div>
+                <div id="gesamtkostenBox">
+                    <p>bisherige Verspätungskosten:&nbsp;
+                        <span id="bisherigeKosten"></span>
+                    </p>
+                </div>
+
             </div>
             <div id="tabs-2">
                 <table>
@@ -67,7 +72,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Startzeit:</td>
+                        <td>Startzeit (HH:MM):</td>
                         <td>
                             <input type="time" id="inputStarttime" />
                         </td>
@@ -89,7 +94,11 @@
                 </table>
                 <button id="uebernehmen" type="button">Übernehmen</button>
             </div>
-
+            <div id="startZeitInvalid" title="Fehlerhafte Zeitangabe">
+                <p>
+                    <span class="ui-icon ui-icon-alert" style=" float: left; margin:0 7px 20px 0; "></span>
+                    Fehlerhafte Zeiteingabe. Versuche die Form HH:MM.</p>
+            </div>
         </div>
     </div>
 </body>

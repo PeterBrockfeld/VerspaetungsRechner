@@ -12,39 +12,40 @@ var anzahlEingeladene = 0,
     durchschnittsKosten = 0.0,
     ankunftsZeiten = [],
     anzahlAnwesende = 0,
+    gesamtKosten = 0.0,
     letzteGesamtKosten = 0.0;
 
 function parseTime(timeString) {
     "use strict";
-    if (timeString === '') {
-        return null;
-    }
-
-    var time = timeString.match(/(\d+)(:(\d\d))?\s*(p?)/i),
-        hours = 0,
+    var time = timeString.match(/(\d?\d):?(\d?\d?)/),
+        h = 0,
+        m = 0,
         d = {};
 
     if (time === null) {
         return null;
+    } else {
+
+        h = parseInt(time[1], 10);
+        m = parseInt(time[2], 10);
+
     }
 
-    hours = parseInt(time[1], 10);
-    if (hours === 12 && !time[4]) {
-        hours = 0;
+    if ((h >= 0 && h <= 24) && (m >= 0 && m <= 59)) {
+        d = new Date();
+        d.setHours(h);
+        d.setMinutes(m);
+        d.setSeconds(0);
+        return d;
     } else {
-        hours += (hours < 12 && time[4]) ? 12 : 0;
+        return null;
     }
-    d = new Date();
-    d.setHours(hours);
-    d.setMinutes(parseInt(time[3], 10) || 0);
-    d.setSeconds(0, 0);
-    return d;
 }
 
 function kostenNeuErrechnen() {
     "use strict";
-    var gesamtKosten = 0.0,
-        jetzt = new Date();
+    var jetzt = new Date();
+    gesamtKosten = 0.0;
 
     function kostenHinzuAddieren(element, index, array) {
         var diff = element - startZeit,
@@ -84,12 +85,17 @@ function einstellungenUebernehmen() {
     titel = $("#inputTitle").val();
     $("#titel").html(titel);
     startZeit = parseTime($("#inputStarttime").val());
-    $("#geplanterStart").html(startZeit.toLocaleTimeString());
+    if (startZeit === null) {
+        $("#startZeitInvalid").dialog("open");
+    } else {
+        $("#geplanterStart").html(startZeit.toLocaleTimeString() + "h");
+    }
     durchschnittsKosten = parseFloat($("#sliderDKosten").slider("value"));
     anzahlEingeladene = parseInt($("#sliderGeladene").slider("value"), 10);
     $("#anzahlEingeladene").html(anzahlEingeladene.toString());
-    einerMehr();  //jemand muss den Knopf betätigt haben :-)
+    einerMehr(); //jemand muss den Knopf betätigt haben :-)
     kostenNeuErrechnen();
+    $("#tabs").tabs("option", "active", 0);
 }
 /*
  * jQueryUI functions
@@ -109,7 +115,8 @@ $(function () {
         });
     $("#tabs")
         .tabs({
-            heightStyle: "auto"
+            heightStyle: "auto",
+            active: 1
         });
     $("#sliderDKosten")
         .slider({
@@ -132,14 +139,30 @@ $(function () {
             step: 1,
             value: 2
         });
+    $("#startZeitInvalid")
+        .dialog({
+            resizeable: false,
+            height: 240,
+            modal: true,
+            autoOpen: false,
+            buttons: {
+                "OK": function () {
+                    $("#inputStarttime").val("00:00");
+                    $(this).dialog("close");
+                }
+            }
+        });
 });
 
 function init() {
     "use strict";
-    $("#titel").html("Test");
-    $("#anzahlAnwesende").html(anzahlAnwesende);
-    $("#anzahlEingeladene").val(0);
-    $("#bisherigeKosten").val(0.0);
+    $("#titel").html("Titel des Treffens");
+    $("#anzahlAnwesende").html(anzahlAnwesende.toString());
+    $("#anzahlEingeladene").html(anzahlEingeladene.toString());
+    $("#bisherigeKosten").html(gesamtKosten.toLocaleString('de-DE', {
+        style: 'currency',
+        currency: 'EUR'
+    }));
     $("#auswahlDurchschnittskosten").html("9");
     $("#auswahlEingeladene").html("2");
 }

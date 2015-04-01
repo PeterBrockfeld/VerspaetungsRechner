@@ -24,7 +24,7 @@
     }
     #theIntro {
         margin: auto;
-        width: 62%;
+        width: 80%;
         box-shadow: 10px 10px 10px black;
         background-color: rgba(0, 0, 0, 0.5);
         text-align: center;
@@ -41,15 +41,22 @@
     #theApplication {
         clear: both;
         margin: auto;
-        width: 62%;
+        width: 80%;
         box-shadow: 10px 10px 10px black;
         background-color: rgba(0, 0, 0, 0.5)
     }
-    #theButtons {
+    
+    #gesamtkostenBox {
+        clear: both;
         margin: auto;
-        width: 62%;
-        box-shadow: 10px 10px 10px black;
-        background-color: rgba(0, 0, 0, 0.5)
+        box-shadow: 10px 10px 5px black;
+        border-radius: 5px;
+        background-color: rgba(185, 185, 185, 1.0);
+        padding: 10px;
+        margin: 15px;
+    }
+    #tableBox {
+        float: left;
     }
     #bisherigeKosten {
         background-color: rgba(255, 255, 0, 1.0);
@@ -57,12 +64,21 @@
         font-weight: bold;
         padding: 10px;
     }
+    #buttonBox {
+        float: right;
+    }
+    .formItem {
+        font-weight: bold;
+    }
     button {
         margin: 3mm;
-        box-shadow: 10px 10px 10px black;
+        box-shadow: 5px 5px 5px black;
     }
     li {
         list-style-type: none;
+    }
+    td {
+        padding-right: 2em;
     }
     .tableHead {
         background-color: #888888;
